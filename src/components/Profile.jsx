@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Profile() {
     const profileMenu = ["Profile", "Password", "Email", "Signout"]
@@ -30,9 +31,9 @@ export default function Profile() {
                     role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabIndex={-1}>
                     {
                         profileMenu.map((Menu, key) => (
-                            <a key={key} href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex={-1} id={`user-menu-item-${key}`}>
+                            <Link key={key} to="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex={-1} id={`user-menu-item-${key}`}>
                                 {Menu}
-                            </a>))
+                            </Link>))
                     }
                 </div>) : ("")
             }
