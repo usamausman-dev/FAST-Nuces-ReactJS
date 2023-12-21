@@ -2,10 +2,13 @@ import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { GlobalContext } from '../Context/context'
 import Profile from './Profile'
+import { FaCartShopping } from "react-icons/fa6";
+import Sidebar from './Sidebar';
 
 function Navbar() {
 
     const { state, dispatch } = useContext(GlobalContext)
+    const [cart, setCart] = useState(false)
 
     const NavElements = [
         {
@@ -41,8 +44,21 @@ function Navbar() {
                     </Link>
                 </div>
 
+
+
+                {cart && <Sidebar />}
                 {/* Hamburger  */}
-                <div className="flex lg:hidden">
+                <div className="flex gap-4 lg:hidden">
+
+
+
+
+                    <Profile />
+
+                    <button className="bg-indigo-600 text-white p-2 rounded-full" onClick={() => setCart(!cart)}>
+                        <FaCartShopping />
+                    </button>
+
                     <button
                         onClick={() => setNavOpen(true)}
                         type="button"
@@ -68,10 +84,15 @@ function Navbar() {
 
                 {
                     state.user?.role && <div className="hidden lg:flex lg:flex-1 lg:justify-end items-center gap-4">
-                        
+
 
                         <Profile />
-                    
+
+                        <button className="bg-indigo-600 text-white p-2 rounded-full flex items-center gap-2 px-3" onClick={() => setCart(!cart)}>
+                            <FaCartShopping /> <span className='text-sm font-semibold'> Cart</span>
+                        </button>
+
+
 
                     </div>
                 }
@@ -159,6 +180,9 @@ function Navbar() {
 
                                 </div>
                             }
+
+
+
 
 
                             {

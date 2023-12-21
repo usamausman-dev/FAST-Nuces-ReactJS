@@ -3,9 +3,11 @@ import { reducer } from "./reducer";
 
 export const GlobalContext = createContext("Initial Value");
 let data = {
-    user: {
+    user: 
+    
+    {
         name : 'Usama',
-        role : 'admin'
+        role : 'user'
     },
 };
 
